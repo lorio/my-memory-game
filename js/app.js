@@ -1,3 +1,5 @@
+//help from https://github.com/RJGrunau/fend-project-memory-game/blob/master/js/app.js#L18 and Mike Wales video.
+
 //to start //////////////////////
 const cards = document.querySelectorAll('.card');
 const deck = document.querySelector('.deck');
