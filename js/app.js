@@ -1,8 +1,8 @@
 //help from https://github.com/RJGrunau/fend-project-memory-game/blob/master/js/app.js#L18 and Mike Wales video.
 
 //to start //////////////////////
-let cards = document.querySelectorAll('.card');
 const deck = document.querySelector('.deck');
+ /////* Create a list that holds all of your cards *//////////
 let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
           'fa-diamond', 'fa-diamond',
           'fa-anchor', 'fa-anchor',
@@ -16,20 +16,17 @@ let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
 let openCards = [];
 let moves = 1;
 const movesCounter = document.querySelectorAll('.moves');
-
-function initGame() {
+//let cards = document.createElement('li');
 // loop through each card and create its HTML ///////
-  let cardHTML = pix.map(function (card) {
-    return generateCards(card);
-  });  
   // Display the cards on the page
 // add each card's HTML to the page ////////////////
-    deck.innerHTML = cardHTML.join('');    
-}
- /////* Create a list that holds all of your cards *//////////
- function generateCards(card) {
+let card = pix.map(function generateCards(card) {
   return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
- }
+});
+deck.innerHTML = card.join('');
+
+function initGame() {
+}
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(pix) {
     var currentIndex = pix.length, temporaryValue, randomIndex;
@@ -43,27 +40,25 @@ function shuffle(pix) {
     return pix;
 }
 //start game ///////////////////////////////////
+initGame(); 
 
-/*card {
-  addEventListener(click, function(e){
-    card.classList.add(open, show);
-  });
-}   */
+function flip(e) {
+  
+  if (!e.target === card) {
+    return;
+  } else {
+  //openCards.push(card); 
+  e.target.classList.add('open', 'show'); 
+  
+  };
+}; 
+ 
+  deck.addEventListener('click', flip, false);     
 
-
-cards.forEach(function(card){
-  card.addEventListener('click', function(e){
-    openCards.push(card);
-    cards.classList.add('open', 'show');
-    console.log(e);
-    //cardMatch(card);
-  });
-});
-initGame();   
-   /*if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {*/   
-/*          
+ /* /* *//*if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {*/   
+/*    */      
 /*if match*/
-      if (openCards.length == 2) {
+/*      if (openCards.length == 2) {
         if (openCards[0].dataset.card == openCards[1].dataset.card) {
           openCards[0].classList.add('match');
           openCards[0].classList.add('open');
@@ -74,16 +69,16 @@ initGame();
           openCards = []
           } else {
 /*if no match*/
-          setTimeout(function(card) {
+         /* setTimeout(function(card) {
             openCards.forEach(function(card){
               card.classList.remove('open', 'show');
             });
             openCards = [];  
-          }, 1000);        
-        }
+          }, 1000);        */
+      /*  }*/
        /* moves += 1;
         moveCounter.innerText = moves;*/
-      }
+/*      }*/
 
 
 
@@ -105,3 +100,4 @@ function flip(card) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+/**/
