@@ -21,11 +21,13 @@ const movesCounter = document.querySelectorAll('.moves');
   // Display the cards on the page
 // add each card's HTML to the page ////////////////
 let card = pix.map(function generateCards(card) {
+  shuffle(pix);
   return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
 });
 deck.innerHTML = card.join('');
 
 function initGame() {
+
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(pix) {
@@ -43,17 +45,14 @@ function shuffle(pix) {
 initGame(); 
 
 function flip(e) {
-  
   if (!e.target === card) {
     return;
-  } else {
-  //openCards.push(card); 
-  e.target.classList.add('open', 'show'); 
-  
+    } else  {
+      openCards.push(card); 
+      e.target.classList.add('open', 'show'); 
   };
 }; 
- 
-  deck.addEventListener('click', flip, false);     
+deck.addEventListener('click', flip, false);     
 
  /* /* *//*if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {*/   
 /*    */      
