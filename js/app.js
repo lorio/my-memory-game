@@ -20,14 +20,14 @@ const movesCounter = document.querySelectorAll('.moves');
 // loop through each card and create its HTML ///////
   // Display the cards on the page
 // add each card's HTML to the page ////////////////
-let card = pix.map(function generateCards(card) {
-  shuffle(pix);
-  return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
-});
-deck.innerHTML = card.join('');
+
 
 function initGame() {
-
+  let card = pix.map(function generateCards(card) {
+    shuffle(pix);
+    return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
+  });
+  deck.innerHTML = card.join('');
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(pix) {
@@ -43,7 +43,7 @@ function shuffle(pix) {
 }
 //start game ///////////////////////////////////
 initGame(); 
-
+const card = document.querySelectorAll('.card');
 function flip(e) {
   if (!e.target === card) {
     return;
