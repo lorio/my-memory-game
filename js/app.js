@@ -15,7 +15,7 @@ let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
 // create an empty list of open cards
 let openCards = [];
 let moves = 1;
-const movesCounter = document.querySelectorAll('.moves');
+const movesCounter = document.querySelector('.moves');
 //let cards = document.createElement('li');
 // loop through each card and create its HTML ///////
   // Display the cards on the page
@@ -42,18 +42,49 @@ function shuffle(pix) {
     return pix;
 }
 //start game ///////////////////////////////////
-initGame(); 
 const card = document.querySelectorAll('.card');
+initGame(); 
+let cardsInPlay = document.querySelectorAll('li.show');
 function flip(e) {
   if (!e.target === card) {
     return;
-    } else  {
+  } else  {
       openCards.push(card); 
-      e.target.classList.add('open', 'show'); 
+      e.target.classList.toggle('open');
+      e.target.classList.toggle('show');
+      moves++;
   };
 }; 
-deck.addEventListener('click', flip, false);     
+deck.addEventListener('click', flip, false);
 
+openCards = card.classList.contains('open','show');
+/*openCards.forEach(function(card) {
+  if (openCards.classList.contains('open', 'show')) {
+    console.log("I'm an open card");
+  };
+});*/
+/*function hide(card) {
+  cardsInPlay.forEach(card => {
+    card.addEventListener('click', hide, false);
+    console.log(card);
+      cardInPlay.pop(card);
+      setTimeout(function() {
+      cardInPlay.classList.remove('open', 'show');
+
+        openCards = []
+      }, 1000);
+    };
+ }); 
+};*/
+/*function resetGame() {
+  hide();
+}
+resetGame();*/
+/*function unflip(e) {
+if (e.target.classlist.contains('show') {
+  setTimeout
+      
+}*/
  /* /* *//*if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {*/   
 /*    */      
 /*if match*/
