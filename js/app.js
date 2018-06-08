@@ -1,6 +1,28 @@
 //help from https://github.com/RJGrunau/fend-project-memory-game/blob/master/js/app.js#L18 and Mike Wales video.
-
+//Chris N timer code
 //to start //////////////////////
+let sec = 0;
+let min = 0;
+let timer;
+function startTimer() {
+  timer = setInterval(insertTime, 1000);
+}
+function stopTimer() {
+  clearInterval(timer);
+  sec = 0;
+  min = 0;
+}
+function insertTime() {
+  sec++;
+  if (sec < 10) {
+    sec = `0${sec}`;
+  }
+  if (sec >= 60) {
+    min++;
+    sec = '00';
+  }
+  document.querySelector('.game-time').innerHTML = `0${min} : ${sec}`;
+}
 const deck = document.querySelector('.deck');
  /////* Create a list that holds all of your cards *//////////
 let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
@@ -38,6 +60,7 @@ function shuffle(pix) {
 initGame(); 
 
 deck.addEventListener('click', function(e){
+  startTimer();
   let card = e.target;
   if (card.className === 'card') {
     card.classList.add('open', 'show');
@@ -65,11 +88,14 @@ deck.addEventListener('click', function(e){
         moveCounter.innerText = moves;*/
 /*      }*/
 
-
-/*function resetGame() {
-  hide();
-}
-resetGame();*/
+let reset = document.querySelector('.restart');
+function resetGame() {
+  reset.addEventListener('click', function(e) {
+    let reset = e.target;
+    stopTimer();
+  });
+};
+resetGame();
  /* /* *//*if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {*/   
 /*    */      
 /*if match*/
