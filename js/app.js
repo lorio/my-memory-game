@@ -86,38 +86,17 @@ deck.addEventListener('click', function(e){
       /*  }*/
        /* moves += 1;
         moveCounter.innerText = moves;*/
-/*      }*/
 
-let reset = document.querySelector('.restart');
+/////*reset game*/////////////////////////////
+const reset = document.querySelector('.restart');
 function resetGame() {
   reset.addEventListener('click', function(e) {
     let reset = e.target;
-    stopTimer();
+    window.location.reload();    
   });
 };
 resetGame();
- /* /* *//*if (!card.classList.contains('open') && !card.classList.contains('show') && !card.classList.contains('match')) {*/   
-/*    */      
-/*if match*/
-/*      if (openCards.length == 2) {
-        if (openCards[0].dataset.card == openCards[1].dataset.card) {
-          openCards[0].classList.add('match');
-          openCards[0].classList.add('open');
-          openCards[0].classList.add('show');
-          openCards[1].classList.add('match');
-          openCards[1].classList.add('open');
-          openCards[1].classList.add('show');
-          openCards = []
-          } else {
 
-
-
-/*const cards = document.querySelectorAll('.card');
-function flip(card) {
-    cards.forEach (function(card) {
-    card.classList.add(open, show);
-    });
-  };*/
 /*
  * set up the event listener for a card. If a card is clicked:
 
