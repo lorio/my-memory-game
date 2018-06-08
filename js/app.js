@@ -52,7 +52,7 @@ deck.addEventListener('click', function(e){
       });
       openCards = [];  
     }, 1500);
-  };
+  }; 
   /*if match*/
   if (openCards.length == 2) {
     if (openCards[0].dataset.card == openCards[1].dataset.card) {
