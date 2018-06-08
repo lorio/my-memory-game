@@ -17,11 +17,10 @@ let openCards = [];
 let moves = 1;
 const movesCounter = document.querySelector('.moves');
 function initGame() {
-  let card = pix.map(function generateCards(card) {
-    shuffle(pix);
+  let cardHTML = shuffle(pix).map(function generateCards(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
   });
-  deck.innerHTML = card.join('');
+  deck.innerHTML = cardHTML.join('');
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(pix) {
