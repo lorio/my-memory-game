@@ -36,8 +36,12 @@ let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
  ];
 // create an empty list of open cards
 let openCards = [];
-let moves = 1;
+let moves = 0;
 const movesCounter = document.querySelector('.moves');
+function countMoves () {
+  moves++;
+  movesCounter.innerHTML = `${moves}`;
+}
 function initGame() {
   let cardHTML = shuffle(pix).map(function generateCards(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
@@ -60,6 +64,7 @@ function shuffle(pix) {
 initGame(); 
 
 deck.addEventListener('click', function(e){
+  countMoves();
   startTimer();
   let card = e.target;
   if (card.className === 'card') {
