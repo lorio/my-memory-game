@@ -38,10 +38,19 @@ let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
 let openCards = [];
 let moves = 0;
 const movesCounter = document.querySelector('.moves');
+const starRating = document.querySelector('.stars')
+//////////watch moves and rate////////////////////
 function countMoves () {
   moves++;
   movesCounter.innerHTML = `${moves}`;
-}
+  let stars = starRating.getElementsByTagName('li');
+  if (moves === 20) {    
+    starRating.removeChild(stars[0]);
+    }
+  if (moves === 40) {
+      starRating.removeChild(stars[0]);
+    }
+};
 function initGame() {
   let cardHTML = shuffle(pix).map(function generateCards(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
@@ -78,7 +87,7 @@ deck.addEventListener('click', function(e){
         card.classList.remove('open', 'show');
       });
       openCards = [];  
-    }, 1500);
+    }, 1000);
   }; 
   /*if match*/
   if (openCards.length == 2) {
