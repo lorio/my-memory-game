@@ -80,25 +80,24 @@ deck.addEventListener('click', function(e){
   if (card.className === 'card') {
     card.classList.add('open', 'show');
     openCards.push(card);
-    }; 
+  
 /////*if match*//////////
-  if (openCards.length == 2) {
-    if (openCards[0].dataset.card == openCards[1].dataset.card) {
-      openCards[0].classList.add('match','open','show');
-      openCards[1].classList.add('match','open','show');
-      matchedCards.push(card);
-     } else {
+    if (openCards.length == 2) {
+      if (openCards[0].dataset.card == openCards[1].dataset.card) {
+        openCards[0].classList.add('match','open','show');
+        openCards[1].classList.add('match','open','show');
+        let match = true;
+        matchedCards.push(card);
+       } 
 //// /*if no match*///////
-        if (openCards.length == 2) {
-            setTimeout(function() {
-              openCards.forEach(function(card){
-                card.classList.remove('open', 'show');
-              });
-              openCards = [];  
-              }, 1000);
-            }
-          };    
-        };
+      setTimeout(function() {
+        openCards.forEach(function(card){
+          card.classList.remove('open', 'show');
+        });
+        openCards = [];  
+        }, 1000);
+      }
+    };
 
   /*if (openCards.length == 16) {
     if (card.className === 'card' && !card.classList.contains('match'))
