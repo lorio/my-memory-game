@@ -8,9 +8,9 @@ function startTimer() {
   timer = setInterval(insertTime, 1000);
 }
 function stopTimer() {
-  clearInterval(timer);
   sec = 0;
   min = 0;
+  clearInterval(timer);
 }
 function insertTime() {
   sec++;
@@ -95,14 +95,14 @@ deck.addEventListener('click', function(e){
           card.classList.remove('open', 'show');
         });
         openCards = [];  
-        }, 1000);
-      }
-    };
-
-  /*if (openCards.length == 16) {
-    if (card.className === 'card' && !card.classList.contains('match'))
-    stopTimer();
-  }*/
+      }, 1000);
+    }
+/////////*game over*////////////////////
+    if (matchedCards.length === 8) {
+        console.log('game over');
+        stopTimer()
+      } 
+    }; 
 });       
 
 /////*reset game*/////////////////////////////
