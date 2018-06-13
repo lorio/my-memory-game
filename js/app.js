@@ -8,9 +8,9 @@ function startTimer() {
   timer = setInterval(insertTime, 1000);
 }
 function stopTimer() {
-  sec = 0;
-  min = 0;
   clearInterval(timer);
+  sec = 0;
+  min = 0;  
 }
 function insertTime() {
   sec++;
@@ -21,8 +21,10 @@ function insertTime() {
     min++;
     sec = '00';
   }
-  document.querySelector('.game-time').innerHTML = `0${min} : ${sec}`;
+  document.querySelector('.game-time').innerHTML = min + ':' + sec;
 }
+
+  
 const deck = document.querySelector('.deck');
  /////* Create a list that holds all of your cards *//////////
 let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
@@ -34,7 +36,7 @@ let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
           'fa-bicycle', 'fa-bicycle',
           'fa-bomb', 'fa-bomb'
  ];
-// create an empty list of open cards
+// create an empty list of open cards and a list of matched cards 
 let openCards = [];
 let matchedCards = [];
 let moves = 0;
