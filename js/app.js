@@ -1,5 +1,6 @@
 //help from https://github.com/RJGrunau/fend-project-memory-game/blob/master/js/app.js#L18 and Mike Wales video.
 //Chris N timer code
+//modal code from w3 schools
 //to start //////////////////////
 let sec = 0;
 let min = 0;
@@ -105,6 +106,7 @@ deck.addEventListener('click', function(e){
     if (matchedCards.length === 8) {
         console.log('game over');
         stopTimer()
+        modal.style.display = "block";
       } 
     }; 
 });       
@@ -119,7 +121,16 @@ function resetGame() {
 };
 resetGame();
 
-
+let modal = document.getElementById('myModal');
+const close = document.getElementsByClassName('close')[0];
+close.onclick = function() {
+  modal.style.display = 'none';
+}
+window.onclick = function(e) {
+  if (e.target == modal) {
+    modal.style.display = 'none';
+  }
+}
 /*
  * set up the event listener for a card. If a card is clicked:
 
