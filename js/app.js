@@ -5,7 +5,9 @@ let sec = 0;
 let min = 0;
 let timer;
 function startTimer() {
-  timer = setInterval(insertTime, 1000);
+  if (!timer) {
+    timer = setInterval(insertTime, 1000);
+  }
 }
 function stopTimer() {
   clearInterval(timer);
