@@ -123,6 +123,12 @@ resetGame();
 
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
+
+//function addResults (message) {
+  //let message = content.textContent;
+const content = modal.getElementsByTagName('p');
+ const message = content.textContent = `You won in ${moves}, in ${min}); and ${sec}.`;
+message.appendChild(content);
 close.onclick = function() {
   modal.style.display = 'none';
 }
@@ -131,6 +137,7 @@ window.onclick = function(e) {
     modal.style.display = 'none';
   }
 }
+/////grab value of moveCounter insert into modal p///////////
 /*
  * set up the event listener for a card. If a card is clicked:
 
