@@ -121,13 +121,15 @@ function resetGame() {
   });
 };
 resetGame();
-
+///////////////*congratulations modal*////////////////////
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
+const modalContent = document.getElementsByClassName('modal-content')[0];
+
 
 //function addResults (message) {
   //let message = content.textContent;
-const message = modal.getElementsByTagName('p');
+
 // const message = content.textContent = `You won in ${moves}, in ${min}); and ${sec}.`;
 //message.appendChild(content);
 //////////*close modal*////////////////
@@ -145,8 +147,15 @@ function updateScore() {
   let stars = starRating.childElementCount;
   //starRating.children.length;
 
-message.textContent = `${stars} stars! You won in ${moves}, in ${min}); and ${sec}.`;
-}
+  /*let text = "hello";
+  function addMessage(text) {
+    let el = modalContent.getElementsByTagName('p')[0];
+    let message = document.createTextNode(text);
+    el.appendChild(message)*/
+    /*el.textContent = `${stars} stars! You won in ${moves}, in ${min}); and ${sec}.`;*/
+  }
+modalContent.lastElementChild.innerHTML = "you won!"
+
 //content.innerHTML = cardHTML.join('');
 /////grab value of moveCounter insert into modal p///////////
 /*
