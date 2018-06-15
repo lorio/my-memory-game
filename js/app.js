@@ -44,18 +44,20 @@ let openCards = [];
 let matchedCards = [];
 let moves = 0;
 const movesCounter = document.querySelector('.moves');
-const starRating = document.querySelector('.stars')
+const starRating = document.querySelector('.stars');
+let stars = starRating.getElementsByTagName('li');
 //////////watch moves and rate////////////////////
-function countMoves () {
+function countMoves (stars) {
   moves++;
   movesCounter.innerHTML = `${moves}`;
-  let stars = starRating.getElementsByTagName('li');
+  
   if (moves === 20) {    
     starRating.removeChild(stars[0]);
     }
   if (moves === 40) {
       starRating.removeChild(stars[0]);
     }
+    return starCount;
 };
 function initGame() {
   let cardHTML = shuffle(pix).map(function generateCards(card) {
@@ -79,7 +81,7 @@ function shuffle(pix) {
 initGame(); 
 
 deck.addEventListener('click', function(e){
-  countMoves();
+  countMoves(stars);
   startTimer();
   let card = e.target;
   if (card.className === 'card') {
@@ -125,7 +127,7 @@ resetGame();
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
 const modalContent = document.getElementsByClassName('modal-content')[0];
-
+let starCount = starRating.childElementCount;
 
 //function addResults (message) {
   //let message = content.textContent;
@@ -143,8 +145,9 @@ window.onclick = function(e) {
 }
 function updateScore() {
   stopTimer();
+  countMoves(stars);
   //insertTime();
-  let stars = starRating.childElementCount;
+  
   //starRating.children.length;
 
   /*let text = "hello";
@@ -153,9 +156,9 @@ function updateScore() {
     let message = document.createTextNode(text);
     el.appendChild(message)*/
     /*el.textContent = `${stars} stars! You won in ${moves}, in ${min}); and ${sec}.`;*/
-  }
-modalContent.lastElementChild.innerHTML = "you won!"
-
+  
+modalContent.lastElementChild.innerHTML = `You won ${starCount} stars!`
+}
 //content.innerHTML = cardHTML.join('');
 /////grab value of moveCounter insert into modal p///////////
 /*
