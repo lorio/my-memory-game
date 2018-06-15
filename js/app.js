@@ -126,6 +126,8 @@ resetGame();
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
 const modalContent = document.getElementsByClassName('modal-content')[0];
+
+
 //////////*close modal*////////////////
 close.onclick = function() {
   modal.style.display = 'none';
@@ -138,20 +140,13 @@ window.onclick = function(e) {
 function updateScore() {
   stopTimer();
   let starCount = stars.length;
- // let time = document.querySelector('.game-time').innerHTML;
-  //insertTime();
-  let gameTime = document.querySelector('.game-time').innerHTML
-
-  //starRating.children.length;
-
-  /*let text = "hello";
-  function addMessage(text) {
-    let el = modalContent.getElementsByTagName('p')[0];
-    let message = document.createTextNode(text);
-    el.appendChild(message)*/
-    /*el.textContent = `${stars} stars! You won in ${moves}, in ${min}); and ${sec}.`;*/
-  
-modalContent.lastElementChild.innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again.`
+  let gameTime = document.querySelector('.game-time').innerHTML;
+  const restartBtn = document.createElement('span');
+  const position = modalContent.children[1];
+  position.appendChild(restartBtn);
+  restartBtn.innerHTML = '<i class="fa fa-repeat"></i>';
+ 
+modalContent.children[1].innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again. ${restartBtn}`
 }
 //content.innerHTML = cardHTML.join('');
 /////grab value of moveCounter insert into modal p///////////
