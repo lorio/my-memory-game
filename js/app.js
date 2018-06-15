@@ -45,20 +45,19 @@ let matchedCards = [];
 let moves = 0;
 const movesCounter = document.querySelector('.moves');
 const starRating = document.querySelector('.stars');
-let stars = starRating.getElementsByTagName('li');
+const stars = starRating.getElementsByTagName('li');
 //////////watch moves and rate////////////////////
-function countMoves (stars) {
+function countMoves() {
   moves++;
-  movesCounter.innerHTML = `${moves}`;
-  
-  if (moves === 20) {    
-    starRating.removeChild(stars[0]);
-    }
-  if (moves === 40) {
-      starRating.removeChild(stars[0]);
-    }
-    return starCount;
+  movesCounter.innerHTML = `${moves}`;  
+  if (moves === 20 || moves === 40) {    
+    removeStars();
+  }
 };
+function removeStars(moves) {
+  starRating.removeChild(stars[0]);
+}
+
 function initGame() {
   let cardHTML = shuffle(pix).map(function generateCards(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
@@ -127,13 +126,6 @@ resetGame();
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
 const modalContent = document.getElementsByClassName('modal-content')[0];
-let starCount = starRating.childElementCount;
-
-//function addResults (message) {
-  //let message = content.textContent;
-
-// const message = content.textContent = `You won in ${moves}, in ${min}); and ${sec}.`;
-//message.appendChild(content);
 //////////*close modal*////////////////
 close.onclick = function() {
   modal.style.display = 'none';
@@ -145,9 +137,11 @@ window.onclick = function(e) {
 }
 function updateScore() {
   stopTimer();
-  countMoves(stars);
+  let starCount = stars.length;
+ // let time = document.querySelector('.game-time').innerHTML;
   //insertTime();
-  
+  let gameTime = document.querySelector('.game-time').innerHTML
+
   //starRating.children.length;
 
   /*let text = "hello";
@@ -157,7 +151,7 @@ function updateScore() {
     el.appendChild(message)*/
     /*el.textContent = `${stars} stars! You won in ${moves}, in ${min}); and ${sec}.`;*/
   
-modalContent.lastElementChild.innerHTML = `You won ${starCount} stars!`
+modalContent.lastElementChild.innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again.`
 }
 //content.innerHTML = cardHTML.join('');
 /////grab value of moveCounter insert into modal p///////////
