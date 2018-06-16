@@ -111,10 +111,10 @@ deck.addEventListener('click', function(e){
     }; 
 });       
 /////*reset game*/////////////////////////////
-const reset = document.querySelector('.restart');
+const reset = document.getElementsByClassName('.restart').querySelectAll('i');
 function resetGame() {
-  reset.addEventListener('click', function(e) {
-    let reset = e.target;
+  reset.addEventListener('click', reset(e) {
+//    let reset = e.target;
     window.location.reload();    
   });
 };
@@ -122,9 +122,9 @@ resetGame();
 ///////////////*congratulations modal*////////////////////
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
-const modalContent = document.getElementsByClassName('modal-content')[0];
-const modalResetBtn = document.createElement('span');
-modalResetBtn.classList.add('.restart')
+//const modalContent = document.getElementsByClassName('modal-content')[0];
+//const modalResetBtn = document.createElement('span')[2];
+//modalResetBtn.classList.add('.restart')
 //////////*close modal*////////////////
 close.onclick = function() {
   modal.style.display = 'none';
@@ -143,5 +143,5 @@ function updateScore() {
   
   modalResetBtn.innerHTML = '<i class="fa fa-repeat"></i>'; 
   modalContent.children[1].innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again.`
-  modalContent.appendChild(modalResetBtn);
+ // modalContent.appendChild(modalResetBtn);
 }
