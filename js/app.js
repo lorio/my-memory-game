@@ -117,12 +117,12 @@ function resetGame() {
   window.location.reload();
 }
 reset[0].addEventListener('click', resetGame);
+
 ///////////////*congratulations modal*////////////////////
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
 const modalContent = document.getElementsByClassName('modal-content')[0];
-//const modalResetBtn = document.createElement('span')[2];
-//modalResetBtn.classList.add('.restart')
+
 //////////*close modal*////////////////
 close.onclick = function() {
   modal.style.display = 'none';
@@ -132,14 +132,11 @@ window.onclick = function(e) {
     modal.style.display = 'none';
   }
 }
-//////////*build final scores into modal*////////////////
-
+//////////*grab final scores*////////////////
 function updateScore() {
   stopTimer();
   let starCount = stars.length;
-  let gameTime = document.querySelector('.game-time').innerHTML;
-  
- // modalResetBtn.innerHTML = '<i class="fa fa-repeat"></i>'; 
+  let gameTime = document.querySelector('.game-time').innerHTML; 
   modalContent.children[1].innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again.`
   reset[1].addEventListener('click', resetGame);
 }
