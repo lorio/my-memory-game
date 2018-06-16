@@ -51,6 +51,12 @@ h1 {
     align-items: center;
     margin: 0 0 3em;
 }
+@media screen and (max-width: 375px) {
+    .deck {
+        width: 90%;
+        min-height: 900px;
+    }
+}
 
 .deck .card {
     height: 125px;
@@ -64,6 +70,12 @@ h1 {
     justify-content: center;
     align-items: center;
     box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+}
+@media screen and (max-width: 375px) {
+    .deck .card {
+        width: 22%;
+        height: 175px;
+    }    
 }
 
 .deck .card.open {
@@ -82,6 +94,12 @@ h1 {
     font-size: 33px;
 }
 
+@media screen and (max-width: 375px) {
+    .deck .card.show,
+    .deck .card.match {
+        font-size: 4em;
+    }
+}
 /*
  * Styles for the Score Panel
  */
@@ -90,6 +108,12 @@ h1 {
     text-align: left;
     width: 345px;
     margin-bottom: 10px;
+}
+@media screen and (max-width: 660px) {
+    .score-panel {
+        width: 90%;
+        font-size: 200%;
+    }
 }
 
 .score-panel .stars {
@@ -138,7 +162,11 @@ h1 {
     border: 1px solid #888;
     width: 80%; /* Could be more or less, depending on screen size */
 }
-
+@media screen and (max-width: 375px) {
+    .modal-content {
+        font-size: 3em;
+    }
+}
 /* The Close Button */
 .close {
     color: #aaa;
@@ -146,7 +174,11 @@ h1 {
     font-size: 28px;
     font-weight: bold;
 }
-
+@media screen and (max-width: 375px) {
+    .close {
+        font-size: 2em;
+    }
+}
 .close:hover,
 .close:focus {
     color: black;

@@ -26,8 +26,6 @@ function insertTime() {
   }
   document.querySelector('.game-time').innerHTML = min + ':' + sec;
 }
-
-  
 const deck = document.querySelector('.deck');
  /////* Create a list that holds all of your cards *//////////
 let pix = ['fa-paper-plane-o', 'fa-paper-plane-o',
@@ -112,7 +110,6 @@ deck.addEventListener('click', function(e){
       } 
     }; 
 });       
-
 /////*reset game*/////////////////////////////
 const reset = document.querySelector('.restart');
 function resetGame() {
@@ -126,8 +123,8 @@ resetGame();
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
 const modalContent = document.getElementsByClassName('modal-content')[0];
-
-
+const modalResetBtn = document.createElement('span');
+modalResetBtn.classList.add('.restart')
 //////////*close modal*////////////////
 close.onclick = function() {
   modal.style.display = 'none';
@@ -137,28 +134,14 @@ window.onclick = function(e) {
     modal.style.display = 'none';
   }
 }
+//////////*build final scores into modal*////////////////
+
 function updateScore() {
   stopTimer();
   let starCount = stars.length;
   let gameTime = document.querySelector('.game-time').innerHTML;
-  const restartBtn = document.createElement('span');
-  const position = modalContent.children[1];
-  position.appendChild(restartBtn);
-  restartBtn.innerHTML = '<i class="fa fa-repeat"></i>';
- 
-modalContent.children[1].innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again. ${restartBtn}`
+  
+  modalResetBtn.innerHTML = '<i class="fa fa-repeat"></i>'; 
+  modalContent.children[1].innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again.`
+  modalContent.appendChild(modalResetBtn);
 }
-//content.innerHTML = cardHTML.join('');
-/////grab value of moveCounter insert into modal p///////////
-/*
- * set up the event listener for a card. If a card is clicked:
-
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
-/**/
