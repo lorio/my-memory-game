@@ -59,7 +59,7 @@ function removeStars(moves) {
 function initGame() {
   let cardHTML = shuffle(pix).map(function generateCards(card) {
     return `<li class="card" data-card="${card}"><i class="fa ${card}"></i></li>`;
-  });
+  })
   deck.innerHTML = cardHTML.join('');
 }
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -97,7 +97,7 @@ deck.addEventListener('click', function(e){
       setTimeout(function() {
         openCards.forEach(function(card){
           card.classList.remove('open', 'show');
-        });
+        })
         openCards = [];  
       }, 1000);
     }
