@@ -47,10 +47,12 @@ const starRating = document.querySelector('.stars');
 const stars = starRating.getElementsByTagName('li');
 //////////watch moves and rate////////////////////
 function countMoves() {
-  moves++;
-  movesCounter.innerHTML = `${moves}`;  
-  if (moves === 20 || moves === 40) {    
-    removeStars();
+  if (openCards.length === 1) {
+    moves += 2;
+    movesCounter.innerHTML = `${moves}`;  
+    if (moves === 20 || moves === 40) {    
+      removeStars();
+    }
   }
 };
 function removeStars(moves) {
@@ -78,16 +80,15 @@ function shuffle(pix) {
 //start game ///////////////////////////////////
 initGame(); 
 
-deck.addEventListener('click', function(e){
-  countMoves(stars);
+deck.addEventListener('click', function(e){  
   startTimer();
   let card = e.target;
   if (card.className === 'card') {
+    countMoves(stars);
     card.classList.add('open', 'show');
-    openCards.push(card);
-  
+    openCards.push(card);    
 /////*if match*//////////
-    if (openCards.length == 2) {
+    if (openCards.length === 2) {
       if (openCards[0].dataset.card == openCards[1].dataset.card) {
         openCards[0].classList.add('match','open','show');
         openCards[1].classList.add('match','open','show');
@@ -99,8 +100,8 @@ deck.addEventListener('click', function(e){
         openCards.forEach(function(card){
           card.classList.remove('open', 'show');
         })
-        openCards = [];  
-      }, 1000);
+        openCards = [];
+      }, 400);
     }
 /////////*game over*////////////////////
     if (matchedCards.length === 8) {
