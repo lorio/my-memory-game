@@ -1,5 +1,5 @@
 //help from https://github.com/RJGrunau/fend-project-memory-game/blob/master/js/app.js#L18 and Mike Wales video.
-//Chris N timer code
+//Chris N timer code: https://gwgnanodegrees.slack.com/files/UA8PXHUR3/FB0Q3CSMB/Getting_the_Memory_Game_timer_to_work
 //modal code from w3 schools
 //to start //////////////////////
 let sec = 0;
@@ -13,7 +13,8 @@ function startTimer() {
 function stopTimer() {
   clearInterval(timer);
   sec = 0;
-  min = 0;  
+  min = 0; 
+  return; 
 }
 function insertTime() {
   sec++;
@@ -111,13 +112,14 @@ deck.addEventListener('click', function(e){
     }; 
 });       
 /////*reset game*/////////////////////////////
-
-const reset = document.querySelectorAll('div.restart');
+//const resets = 
 function resetGame() {
-  window.location.reload();
+    stopTimer();
+    window.location.reload();
 }
-reset[0].addEventListener('click', resetGame);
-
+//resets.addEventListener('click', resetGame, capture);
+const resets = document.querySelectorAll('.restart > i');
+resets[1].addEventListener('click', resetGame);
 ///////////////*congratulations modal*////////////////////
 let modal = document.getElementById('myModal');
 const close = document.getElementsByClassName('close')[0];
@@ -138,5 +140,5 @@ function updateScore() {
   let starCount = stars.length;
   let gameTime = document.querySelector('.game-time').innerHTML; 
   modalContent.children[1].innerHTML = `You are a ${starCount} star winner! Can you beat your ${gameTime} time? Try again.`
-  reset[1].addEventListener('click', resetGame);
+  resets[0].addEventListener('click', resetGame);
 }
